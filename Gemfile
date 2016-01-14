@@ -26,6 +26,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 #Gems needed for application
 #Image uploading
 gem "paperclip", "~> 4.3"
+gem 'aws-sdk', '>= 2.0.0'
+gem "figaro"
 gem 'rails_12factor', group: :production
 gem 'pg', group: :production
 
