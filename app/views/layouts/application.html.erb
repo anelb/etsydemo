@@ -9,8 +9,9 @@
 <body>
 	<%= render 'layouts/navbar' %>
 	<div class='container'>
-		<p class="notice"><%= notice %></p>
-       	<p class="alert"><%= alert %></p>
+		<% if notice %>
+			<div class='alert alert-success'><%= notice %></div>
+       	<% end %>
 		<%= yield %>
 		<%= render 'layouts/footer' %>
 	</div>
