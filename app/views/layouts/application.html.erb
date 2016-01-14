@@ -11,7 +11,10 @@
 	<div class='container'>
 		<% if notice %>
 			<div class='alert alert-success'><%= notice %></div>
+		<% elsif alert %>
+			<div class='alert alert-danger'><%= alert %></div>
        	<% end %>
+
 		<%= yield %>
 		<%= render 'layouts/footer' %>
 	</div>
