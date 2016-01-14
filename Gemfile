@@ -25,6 +25,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 #Gems needed for application
 #Image uploading
+gem 'devise'
 gem "paperclip", "~> 4.3"
 gem 'aws-sdk', '< 2.0'
 gem "figaro"
