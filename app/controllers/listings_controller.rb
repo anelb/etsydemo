@@ -4,12 +4,14 @@ class ListingsController < ApplicationController
   # GET /listings
   # GET /listings.json
   def index
+    puts params[:id]
     @listings = Listing.all
   end
 
   # GET /listings/1
   # GET /listings/1.json
   def show
+
   end
 
   # GET /listings/new
@@ -25,7 +27,7 @@ class ListingsController < ApplicationController
   # POST /listings.json
   def create
     @listing = Listing.new(listing_params)
-
+    @listing.user_id = current_user.id
     respond_to do |format|
       if @listing.save
         format.html { redirect_to @listing, notice: 'Listing was successfully created.' }
