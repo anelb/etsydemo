@@ -4,10 +4,14 @@ class ListingsController < ApplicationController
   # :authenticate_user! - Check if user is logged in
   before_action :authenticate_user!, except: [:index, :show]
   before_action :check_user, only: [:edit, :destroy, :update]
+
   # GET /listings
   # GET /listings.json
+  def seller
+    @listings = Listing.where(user: current_user).order(created_at: :desc)
+  end
+
   def index
-    puts "Current user: #{current_user.blank?}"
     @listings = Listing.all
   end
 

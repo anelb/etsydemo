@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
 
   devise_for :users
+
   resources :listings
   
+  get 'seller' => 'listings#seller'
+
   get 'pages/about'
 
   get 'pages/contact'
