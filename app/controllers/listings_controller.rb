@@ -1,10 +1,13 @@
 class ListingsController < ApplicationController
+  
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
-
+  # :authenticate_user! - Check if user is logged in
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :check_user, only: [:edit, :destroy, :update]
   # GET /listings
   # GET /listings.json
   def index
-    puts params[:id]
+    puts "Current user: #{current_user.blank?}"
     @listings = Listing.all
   end
 
@@ -67,6 +70,12 @@ class ListingsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_listing
       @listing = Listing.find(params[:id])
+    end
+    # Check if current logged in user is same as one who create listing
+    def check_user
+      unless current_user == @listing.user
+        redirect_to root_url, alert: 'Sorry, that listing belongs to someone else'
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
