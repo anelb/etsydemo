@@ -6,7 +6,8 @@
 		  <h3><%= @listing.name %></h3>
 		  <p><strong>Price:</strong> <%= number_to_currency(@listing.price) %></p>
 		  <p><strong>Description:</strong> <%= @listing.description %></p>
-		  <%= link_to 'Buy it now', new_listing_order_path(@listing), class: 'btn btn-default' %>
+		  <%= link_to 'Buy it now', new_listing_order_path(@listing), 
+		  			  class: 'btn btn-default', data: { no_turbolink: true} %>
 	</div>
 </div>
 <% if current_user == @listing.user %>
